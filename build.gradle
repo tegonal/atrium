@@ -36,7 +36,7 @@ buildscript {
         gradle_nexus_publish_plugin_version = '1.1.0'
 
         //TODO 0.19.0 add all modules and remove this afterwards
-        newMultiplatformProjectNames = ["core"]
+        newMultiplatformProjectNames = ["core", "translations-en_GB", "translations-de_CH"]
 
         // gh-pages.gradle
         docProjects = (subprojects - toolProjectsFun).findAll {
@@ -76,9 +76,6 @@ buildscript {
                         // would have two classes with the same name if we add it as project as well,
                         // (clashes with "${rootProject.name}-translations-en_GB"
                         it.name != "${rootProject.name}-translations-de_CH" &&
-                        // TODO 0.19.0 remove once translations is also migrated to new MPP
-                        it.name != "${rootProject.name}-translations-de_CH-common" &&
-                        it.name != "${rootProject.name}-translations-de_CH-jvm" &&
                         // does not make sense to listen specs in coverage
                         !it.name.startsWith("${rootProject.name}-specs") &&
                         !it.name.contains("smoke-test")
